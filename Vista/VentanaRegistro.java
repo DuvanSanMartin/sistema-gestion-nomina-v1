@@ -78,6 +78,13 @@ public class VentanaRegistro extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel3.setText("Edad:");
 
+        Txtnombre.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                TxtnombreInputMethodTextChanged(evt);
+            }
+        });
         Txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtnombreActionPerformed(evt);
@@ -373,12 +380,12 @@ public class VentanaRegistro extends javax.swing.JDialog {
     }//GEN-LAST:event_TxtapellidoActionPerformed
 
     private void TxtapellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtapellidoKeyTyped
-char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
 
-        if (!(Character.isLetter(c) || c == KeyEvent.VK_SPACE || c == KeyEvent.VK_BACK_SPACE)) {
-            // Si el carácter no es una letra, un espacio o la tecla Backspace, consume el evento
-            evt.consume();
-        }
+                if (!(Character.isLetter(c) || c == KeyEvent.VK_SPACE || c == KeyEvent.VK_BACK_SPACE)) {
+                    // Si el carácter no es una letra, un espacio o la tecla Backspace, consume el evento
+                    evt.consume();
+                }
     }//GEN-LAST:event_TxtapellidoKeyTyped
 
     private void TxtedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtedadKeyTyped
@@ -400,6 +407,10 @@ char c = evt.getKeyChar();
             evt.consume();
         }
     }//GEN-LAST:event_TxtnombreKeyTyped
+
+    private void TxtnombreInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_TxtnombreInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtnombreInputMethodTextChanged
     // Método para establecer la referencia a la ventana Almacenamiento
 
 

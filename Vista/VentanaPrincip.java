@@ -1,6 +1,7 @@
 
 package Vista;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -82,6 +83,11 @@ public class VentanaPrincip extends javax.swing.JFrame {
         Txtusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtusuarioActionPerformed(evt);
+            }
+        });
+        Txtusuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtusuarioKeyTyped(evt);
             }
         });
 
@@ -231,6 +237,15 @@ public class VentanaPrincip extends javax.swing.JFrame {
     private void TxtusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtusuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtusuarioActionPerformed
+
+    private void TxtusuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtusuarioKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!(Character.isLetter(c) || c == KeyEvent.VK_SPACE || c == KeyEvent.VK_BACK_SPACE)) {
+            // Si el carácter no es una letra, un espacio o la tecla Backspace, consume el evento
+            evt.consume();
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_TxtusuarioKeyTyped
 
     /**
      * @param args the command line arguments
