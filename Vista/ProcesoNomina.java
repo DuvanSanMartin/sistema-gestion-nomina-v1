@@ -83,7 +83,6 @@ public class ProcesoNomina extends javax.swing.JDialog {
 
         jLabel2.setBackground(new java.awt.Color(51, 51, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Proceso de Nomina");
 
@@ -110,7 +109,7 @@ public class ProcesoNomina extends javax.swing.JDialog {
         jLabel7.setText("Salario Bruto:");
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
-        jLabel8.setText("Deduciones:");
+        jLabel8.setText("Deducciones:");
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -296,13 +295,11 @@ public class ProcesoNomina extends javax.swing.JDialog {
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TxtSalariobr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(Txtdeduciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -331,7 +328,7 @@ public class ProcesoNomina extends javax.swing.JDialog {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Edad", "Categoria", "Salario Bruto", "Deduciones", "Iess", "Salario Total"
+                "Nombre", "Apellido", "Edad", "Categoria", "Salario Bruto", "Deducciones", "Iess", "Salario Total"
             }
         ) {
             Class[] types = new Class [] {
@@ -397,17 +394,19 @@ public class ProcesoNomina extends javax.swing.JDialog {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(Btinsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Bteliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btcleanevery, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Btguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(Btinsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Bteliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btcleanevery, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Btguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -522,27 +521,12 @@ public class ProcesoNomina extends javax.swing.JDialog {
 
     private void BtguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtguardarActionPerformed
     String archivoGuardar = "nominaproce.csv";
-
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoGuardar))) {
-        for (Object[] rowData : datos.values()) {
-            String nombre = (String) rowData[0];
-            String apellido = (String) rowData[1];
-            String edad = (String) rowData[2];
-            String categoria = (String) rowData[3];
-            double salarioBruto = (double) rowData[4];
-            double deducciones = (double) rowData[5];
-            double iess = (double) rowData[6];
-            double salarioTotal = (double) rowData[7];
-
-            String linea = nombre + "," + apellido + "," + edad + "," + categoria + "," +
-                           salarioBruto + "," + deducciones + "," + iess + "," + salarioTotal + "\n";
-            bw.write(linea);
-        }
-
-        JOptionPane.showMessageDialog(this, "Datos guardados exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(this, "Error al guardar los datos", "Error", JOptionPane.ERROR_MESSAGE);
-    }
+    int resultado = JOptionPane.showConfirmDialog(this, "¿Desea guardar los cambios antes de salir?", "Confirmar", JOptionPane.YES_NO_OPTION);
+    
+    if(resultado == JOptionPane.YES_OPTION) {
+        // Código para guardar datos
+        this.dispose();
+    }   
     }//GEN-LAST:event_BtguardarActionPerformed
 
     private void TxtsalarioTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtsalarioTotalActionPerformed
